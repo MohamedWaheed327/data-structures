@@ -33,16 +33,18 @@ public:
     }
 
     void pop() {
+        swap(v[0], v.back());
+        v.pop_back();
+        heapify(0);
     }
 
     void push(T x) {
         v.push_back(x);
         int cur = v.size() - 1;
         while (cur) {
-            heapify(cur);
             cur = (cur - 1) / 2;
+            heapify(cur);
         }
-        heapify(0);
     }
 
     T top() {
